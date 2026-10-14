@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>this is a page for adding a new product to the system.</h1>
-<h1>PurchasesController</h1>
+<h1>CommentController</h1>
 
 <form action="">
 

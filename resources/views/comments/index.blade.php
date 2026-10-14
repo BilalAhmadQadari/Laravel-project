@@ -8,7 +8,7 @@
 <body>
     
     
-    <h1>PurchasesController</h1>
+    <h1>CommentController</h1>
     <h1>This page shows all products</h1>
     
 </body>
