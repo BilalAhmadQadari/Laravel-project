@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return view('index');
+})
+;Route::get('/index', function(){
+    return view('index');
 });
 
 Route::get('/login', function () {
@@ -35,4 +38,9 @@ Route::resource('comments',CommentController::class);
 
 use App\Http\Controllers\PurchasesController;
 Route::resource('purchases',PurchasesController::class);
+
+Route::post('/', [
+    ProductController::class,
+    'requestDemo'
+])->name('request.demo');
 

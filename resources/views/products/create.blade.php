@@ -8,24 +8,46 @@
 <body>
 <h1>this is a page for adding a new product to the system.</h1>
 
-<form action="">
 
-    <label for="productName">Name:</label>
-    <input type="text" placeholder="product name">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Demo</title>
+</head>
+<body>
 
-    <br><br>
+    <h2>Add Product</h2>
 
-    <label for="productPrice">Product price</label>
-    <input type="number" name="productPrice" id="productPrice" placeholder="productPrice">
+    <form action="{{ route('products.store') }}" method="POST">
+        @csrf
 
-    <br><br>
+        <label>Product Name:</label>
+        <input type="text" name="name" required>
 
-    <label for="productPhoto">browse photo:</label>
-    <input type="file">
+        <br><br>
 
-    <button type="submit">add</button>
+        <label>Price:</label>
+        <input type="number" name="price"
+               min="0" step="any" required>
 
-</form>
+        <br><br>
+
+        <label>Active:</label>
+        <input type="checkbox" name="active" value="1">
+
+        <br><br>
+
+        <label>Photo:</label>
+        <input type="file" name="photo">
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+</html>
     
 </body>
 </html>

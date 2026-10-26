@@ -3,7 +3,8 @@
 @section('content')
 
 <main>
-  
+  <button type="submit" aria-label="Search">hhhhhhh</button>
+
   <section class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-content">
