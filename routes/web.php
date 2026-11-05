@@ -1,34 +1,35 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Route::get('/', function(){
-    return view('index');
-})
-;Route::get('/index', function(){
-    return view('index');
-});
+use Illuminate\Support\Facades\View;
+// Route::view('/','index');
+// Route::view('/index','index');
+// Route::view('/login','login');
+// Route::view('/about','about');
+// Route::view('/product','product');
+// Route::view('/welcome','welcome');
 
-Route::get('/login', function () {
-    return view('login');
-    
-    
-});
+Route::get('/{$name}', function( $name) {
 
-Route::get('/about', function(){
-    return view('about');
-});
-
-Route::get('/product', function(){
-    return view('product');
-    
-});
-Route::get('/welcome', function(){
-    return view('welcome');
-    
-});
+        if(View::exists($name)){
+            return view($name);
+        }
+        
+        return view('index');
+        
+    }
+);
 
 use App\Http\Controllers\ProductController;
-Route::resource('products',ProductController::class);
+
+Route::resource('products', ProductController::class)
+    ->only(['index', 'show']);
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('products', ProductController::class)
+        ->only(['create', 'store', 'edit', 'update', 'destroy']);
+});
+
 
 use App\Http\Controllers\UserController;
 Route::resource('users',UserController::class);
@@ -39,8 +40,20 @@ Route::resource('comments',CommentController::class);
 use App\Http\Controllers\PurchasesController;
 Route::resource('purchases',PurchasesController::class);
 
-Route::post('/', [
-    ProductController::class,
-    'requestDemo'
-])->name('request.demo');
+
+use App\Http\Controllers\AuthController;
+
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
+
+
+
+
 
