@@ -15,36 +15,35 @@
     <title>Request Demo</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+</head>
+<body>
 
-    <h2>Add Product</h2>
+		<h1>Add New Product</h1>
 
-    <form action="{{ route('products.store') }}" method="POST">
-        @csrf
+		<form action="{{ route('products.store') }}" method="POST">
 
-        <label>Product Name:</label>
-        <input type="text" name="name" required>
+				@csrf
 
-        <br><br>
+				<label>Product Name:</label>
+				<input type="text" name="name" required>
 
-        <label>Price:</label>
-        <input type="number" name="price"
-               min="0" step="any" required>
+				<br><br>
 
-        <br><br>
+				<label>Product Price:</label>
+				<input type="number" name="price" step="0.01" required>
 
-        <label>Active:</label>
-        <input type="checkbox" name="active" value="1">
+				<br><br>
 
-        <br><br>
+				<button type="submit">Save Product</button>
 
-        <label>Photo:</label>
-        <input type="file" name="photo">
+		</form>
 
-        <br><br>
-
-        <button type="submit">Submit</button>
-
-    </form>
+</body>
+</html>
 
 </body>
 </html>

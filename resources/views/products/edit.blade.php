@@ -7,19 +7,36 @@
 
     <h1>Edit Product</h1>
 
-    <form>
+    <form action="{{ route('products.update', $product->id) }}" method="POST">
+
+        @csrf
+        @method('PUT')
+
         <label>Product Name:</label>
-        <input type="text">
+        <input
+            type="text"
+            name="name"
+            value="{{ $product->name }}"
+            required
+        >
 
         <br><br>
 
-        <label>Price:</label>
-        <input type="number">
+        <label>Product Price:</label>
+        <input
+            type="number"
+            name="price"
+            value="{{ $product->price }}"
+            step="0.01"
+            required
+        >
 
         <br><br>
 
         <button type="submit">Update Product</button>
+
     </form>
 
 </body>
+</html>
 </html>

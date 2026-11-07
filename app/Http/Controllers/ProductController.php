@@ -12,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -30,34 +31,15 @@ class ProductController extends Controller
    
 public function store(Request $request)
 {
-    // 1. Get data from the form
-    $name = $request->input('name');
-    $price = $request->input('price');
+    $validated = $request->validate([
+        'name' => 'required|string|max:100',
+        'price' => 'required|numeric|min:0',
+    ]);
 
-    // 2. Define the JSON file path
-    $path = storage_path('app/product.json');
+    Product::create($validated);
 
-    // 3. Read existing data
-    $data = file_get_contents($path);
-
-    // 4. Convert JSON into a PHP array
-    $products = json_decode($data, true) ?? [];
-
-    // 5. Add the new product
-    $products[] = [
-        'id' => count($products) + 1,
-        'name' => $name,
-        'price' => $price,
-    ];
-
-    // 6. Convert array to JSON and save it
-    file_put_contents(
-        $path,
-        json_encode($products, JSON_PRETTY_PRINT)
-    );
-
-    // 7. Show the saved data
-    return $products;
+    return redirect()->route('products.index')
+        ->with('success', 'Product added successfully!');
 }
 
 
@@ -73,18 +55,27 @@ public function store(Request $request)
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        return view('products.edit');
-        
+        return view('products.edit', compact('product'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'price' => 'required|numeric|min:0',
+        ]);
+
+        $product->update($validated);
+
+        return redirect()->route('products.index')
+        ->with('success', 'Product updated successfully!');
+
     }
 
     /**
@@ -92,6 +83,10 @@ public function store(Request $request)
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with('success', 'Product deleted successfully!');
     }
 }

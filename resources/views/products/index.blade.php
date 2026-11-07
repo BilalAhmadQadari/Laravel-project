@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>products</title>
-</head>
-<body>
-    <h1>This page shows all products</h1>
+<html>
+    <head>
+        <title>Products</title>
+    </head>
+    <body>
+        
+			<h1>Products List</h1>
+			@if(session('success'))
+    		<p>{{ session('success') }}</p>
+			@endif
+			
+			<form action="{{ route('logout') }}" method="POST">
+				@csrf
+				<button type="submit">Logout</button>
+			</form>
+
+			<table border="1" cellpadding="10">
+
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					@foreach($products as $product)
+						<tr>
+							<td>{{ $product->id }}</td>
+							<td>{{ $product->name }}</td>
+							<td>{{ $product->price }}</td>
+							<td><a href="{{ route('products.edit', $product->id) }}">
+        						Edit
+   								</a>
+							</td>
+							<td>
+								<form action="{{ route('products.destroy', $product->id) }}" method="POST">
+									@csrf
+									@method('DELETE')
+									<button type="submit">Delete</button>
+								</form>
+							</td>
+						</tr>
+					@endforeach
+				</tbody>
+
+    	</table>
+		<a href="{{ route('products.create') }}">
+			<button type="button">Add Product</button>
+		</a>
+
 </body>
 </html>

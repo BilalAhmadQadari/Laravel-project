@@ -1,35 +1,22 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-// Route::view('/','index');
-// Route::view('/index','index');
-// Route::view('/login','login');
-// Route::view('/about','about');
-// Route::view('/product','product');
-// Route::view('/welcome','welcome');
+Route::view('/','index');
+Route::view('/index','index');
+Route::view('/login','login');
+Route::view('/about','about');
+Route::view('/product','product');
+Route::view('/welcome','welcome');
 
-Route::get('/{$name}', function( $name) {
-
-        if(View::exists($name)){
-            return view($name);
-        }
-        
-        return view('index');
-        
-    }
-);
+// Route::get('/{name}', function ($name) {
+//     if (View::exists($name)) {
+//         return view($name);
+//     }
+//     return view('index');
+// });
 
 use App\Http\Controllers\ProductController;
-
-Route::resource('products', ProductController::class)
-    ->only(['index', 'show']);
-
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('products', ProductController::class)
-        ->only(['create', 'store', 'edit', 'update', 'destroy']);
-});
-
+Route::resource('products', ProductController::class); 
 
 use App\Http\Controllers\UserController;
 Route::resource('users',UserController::class);
