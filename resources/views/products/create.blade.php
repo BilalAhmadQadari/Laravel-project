@@ -24,8 +24,12 @@
 
 		<h1>Add New Product</h1>
 
-		<form action="{{ route('products.store') }}" method="POST">
-
+		
+		
+		
+			<form method="POST"
+			action="{{ route('products.store') }}"
+			enctype="multipart/form-data">
 				@csrf
 
 				<label>Product Name:</label>
@@ -37,6 +41,16 @@
 				<input type="number" name="price" step="0.01" required>
 
 				<br><br>
+
+				<div class="mb-3">
+				<label for="image">Product Image</label>
+				<input type="file"
+				name="image"
+				id="image"
+				class="form-control"
+				accept="image/*"
+				required>
+				</div>
 
 				<button type="submit">Save Product</button>
 

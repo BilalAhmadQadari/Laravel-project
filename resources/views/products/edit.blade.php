@@ -7,8 +7,9 @@
 
     <h1>Edit Product</h1>
 
-    <form action="{{ route('products.update', $product->id) }}" method="POST">
-
+    <form action="{{ route('products.update', $product->id) }}"
+        method="POST"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -33,6 +34,18 @@
 
         <br><br>
 
+        <img src="{{ asset('storage/' . $product->image) }}"
+        width="100"
+        alt="{{ $product->name }}">
+
+        <div class="mb-3">
+        <label for="image">Product Image</label>
+        <input type="file"
+        name="image"
+        id="image" 
+        class="form-control"
+        accept="image/*">
+        
         <button type="submit">Update Product</button>
 
     </form>

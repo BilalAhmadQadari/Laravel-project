@@ -22,6 +22,9 @@
 						<th>ID</th>
 						<th>Name</th>
 						<th>Price</th>
+						<th>image</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 
@@ -31,6 +34,17 @@
 							<td>{{ $product->id }}</td>
 							<td>{{ $product->name }}</td>
 							<td>{{ $product->price }}</td>
+							<td>
+								@if($product->image)
+									<img src="{{ asset('storage/' . $product->image) }}" 
+									alt="{{ $product->name }}"
+									width="100"
+									height="100"
+									style="object-fit: cover;">
+								@else
+									No Image
+								@endif
+							</td>
 							<td><a href="{{ route('products.edit', $product->id) }}">
         						Edit
    								</a>
