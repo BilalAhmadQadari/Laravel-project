@@ -11,6 +11,7 @@
     
     <link rel="icon" href="{{ asset('images/logo.png')}}"/>
     <link rel="stylesheet" href="{{ asset('css/homePageStyle.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/products.css')}}">
 
 </head>
 

@@ -10,6 +10,9 @@
     		<p>{{ session('success') }}</p>
 			@endif
 			
+			<a href="{{ route('products.create') }}">
+				<button type="button">Add Product</button>
+			</a>
 			<form action="{{ route('logout') }}" method="POST">
 				@csrf
 				<button type="submit">Logout</button>
@@ -61,9 +64,7 @@
 				</tbody>
 
     	</table>
-		<a href="{{ route('products.create') }}">
-			<button type="button">Add Product</button>
-		</a>
+	
 
 </body>
 </html>

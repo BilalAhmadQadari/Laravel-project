@@ -1,115 +1,208 @@
 @extends('layouts.app')
-@section('title','Home-Page')
+@section('title', 'Home Page')
+
 @section('content')
 
-<main>
-  <button type="submit" aria-label="Search">hhhhhhh</button>
+<main class="home-page">
 
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>زموږ هدف په نظامي برخه کې په ځان بسیا کول دي</h1>
-      <p>موږ د دفاعي او خودکاره سیستمونو په برخه کې پرمختللي اتومات وسایل وړاندې کوو.</p>
-      <a href="#products" class="hero-btn">تولیدات وګورئ</a>
-    </div>
-  </section>
+    <!-- ==========================
+         HERO SECTION
+    =========================== -->
+    <section class="home-hero">
+        <div class="container">
+            <div class="row align-items-center gy-5">
 
-  <!-- SERVICES SECTION -->
-  <section id="products" class="products-section">
-    <div class="container">
-      <h2 class="section-title">مشهور تولیدات</h2>
-      <p class="section-subtitle">د لوړ کیفیت او پرمختللې ټیکنالوژۍ لرونکي وسایل</p>
+                <!-- Hero Text -->
+                <div class="col-lg-6">
+                    <div class="hero-content">
 
-      <div class="products-grid">
+                        <span class="hero-label">
+                            ✨ زموږ آنلاین پلورنځي ته ښه راغلاست
+                        </span>
 
-        <article class="products-card">
-          <div class="img-box">
-            <img src="./asset/wide rcws.png" alt="خیبر-۱۳۳">
-          </div>
-          <div class="card-info">
-            <h3>خیبر-۱۳۳</h3>
-            <p>د ځمکنیو عملیاتو لپاره پرمختللی او هوښیار سیسټم.</p>
-            <div class="card-footer">
-              <span class="liked">خوښ شوی</span>
-              <span class="rating">1.9m ★★★★☆</span>
+                        <h1>
+                            خپل د خوښې محصولات
+                            <span>په اسانۍ پیدا کړئ</span>
+                        </h1>
+
+                        <p>
+                            د بېلابېلو محصولاتو پراخه ټولګه وګورئ،
+                            خپل د خوښې توکي انتخاب کړئ او په اسانۍ
+                            خپل آنلاین پیرود پیل کړئ.
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="{{ route('products.index') }}"
+                               class="hero-btn">
+                                همدا اوس پیرود وکړئ
+                            </a>
+
+                            <a href="#featured-products"
+                               class="hero-link">
+                                نور محصولات وګورئ ←
+                            </a>
+
+                        </div>
+
+                        <div class="hero-features">
+
+                            <div>
+                                <strong>✓</strong>
+                                <span>اسانه پیرود</span>
+                            </div>
+
+                            <div>
+                                <strong>✓</strong>
+                                <span>د محصولاتو پراخه ټولګه</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="col-lg-6">
+                    <div class="hero-visual">
+
+                        <div class="hero-circle"></div>
+
+                        <div class="hero-shopping-card">
+
+                            <div class="shopping-icon">🛍️</div>
+
+                            <h3>Online Shopping</h3>
+
+                            <p>ستاسو پیرود، زموږ اسانتیا</p>
+
+                            <div class="shopping-line"></div>
+                            <div class="shopping-line short"></div>
+
+                        </div>
+
+                        <div class="hero-offer">
+
+                            <span>★</span>
+
+                            <div>
+                                <strong>غوره انتخاب</strong>
+                                <small>ستاسو لپاره</small>
+                            </div>
+
+                        </div>
+
+                        <div class="hero-small-card">
+                            <span>🛒</span>
+                            <strong>خپل پیرود پیل کړئ</strong>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
-          </div>
-        </article>
+        </div>
+    </section>
 
-        <!-- Card 2 -->
-        <article class="products-card">
-          <div class="img-box">
-            <img src="./asset/grenade rcws.jpg" alt="الفلاح-۳۵">
-          </div>
-          <div class="card-info">
-            <h3>خیبر ۱۳۳ - ب</h3>
-            <p>د ثقیله وسلو د کنټرول لپاره عصري ټیکنالوژي.</p>
-            <div class="card-footer">
-              <span class="liked">خوښ شوی</span>
-              <span class="rating">2.1m ★★★★★</span>
-            </div>
-          </div>
-        </article>
 
-        <!-- Card 3 -->
-        <article class="products-card">
-          <div class="img-box">
-            <img src="./asset/huge rcws.webp" alt="فاتح-۳۲">
-          </div>
-          <div class="card-info">
-            <h3>فاتح-۳۲</h3>
-            <p>د شپې او ورځې عملیاتو لپاره ځانګړی ډیزاین.</p>
-            <div class="card-footer">
-              <span class="liked">خوښ شوی</span>
-              <span class="rating">1.5m ★★★★☆</span>
+    <!-- ==========================
+         FEATURED PRODUCTS
+    =========================== -->
+    <section class="featured-products" id="featured-products">
+
+        <div class="container">
+
+            <!-- Section Heading -->
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        زموږ انتخاب
+                    </span>
+
+                    <h2>زموږ غوره محصولات</h2>
+
+                    <p>
+                        زموږ له غوره محصولاتو څخه خپل د خوښې توکي انتخاب کړئ.
+                    </p>
+                </div>
+
+                <a href="{{ route('products.index') }}"
+                   class="view-all-btn">
+                    ټول محصولات وګورئ ←
+                </a>
+
             </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+
+
+            <!-- Products Grid -->
+            <div class="featured-products-grid">
+
+                @forelse($products as $product)
+
+                    <article class="product-grid-item">
+
+                        <div class="product-card">
+
+                            <!-- Product Image -->
+                            <div class="product-image-box">
+
+                                @if($product->image)
+
+                                    <img
+                                        src="{{ asset('storage/' . $product->image) }}"
+                                        alt="{{ $product->name }}"
+                                        loading="lazy"
+                                    >
+
+                                @else
+
+                                    <div class="no-product-image">
+                                        <span>🖼️</span>
+                                        <p>انځور نشته</p>
+                                    </div>
+
+                                @endif
+
+                            </div>
+
+
+                            <!-- Product Information -->
+                            <div class="product-information">
+
+                                <h5>{{ $product->name }}</h5>
+
+                                <p class="product-price">
+                                    {{ number_format($product->price) }}
+                                    افغانۍ
+                                </p>
+
+                                <a href="{{ route('products.index') }}"
+                                   class="product-buy-btn">
+                                    محصول وګورئ
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                @empty
+
+                    <div class="empty-products">
+                        <span>🛍️</span>
+                        <h3>تر اوسه محصولات نشته</h3>
+                        <p>وروسته بېرته مراجعه وکړئ.</p>
+                    </div>
+
+                @endforelse
+
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
-
-<section class="testimonials">
-  <h2>د هیوادوالو نظرونه</h2>
-  <p class="subtitle">تاسو کولی سی زموږ د تولیداتو اړوند خپل نظرونه راسره شریک کړی</p>
-
-  <div class="container">
-
-    <div class="card">
-      <img src="./asset/rohullah.jpeg">
-      <p>
-        “زه د الحمزة امارتي شرکت هلي ځلي د نظامي تولید په برخه
-         کې ستایم او ور څخه مننه کوم چې په کمو امکاناتو يې ډېر پرمختللی وسایل تولید کړي او لا یې 
-          هم ګړندی هلي ځلي رواني ساتلي دي د لا پر مختک په هیله یې یو.”
-      </p>
-      <h3>انجینر روح اللّه امین</h3>
-      <span>۱۳۵ استخباراتو ریاست تخنیکي معاوین</span>
-    </div>
-
-    <div class="card">
-      <img src="./asset/diplomat.jpeg">
-      <p>
-        “  الحمزة امارتي شرکت یو له عصري تولیدي شرکتونو له جملي څخه دی،
-         جې نه یواځي دا چې په خپله برخه کې ساری نه لري بلکي د افغاني استعدادونو د جلب 
-         یوازینی  منبع ده چې په زیاته اندازه افغاني کدرونه یې په کار ګمارلي دي.
-      </p>
-      <h3>ډیپلوماټ جاراللّه جاهد</h3>
-      <span>د ننګرهار ولایت د والي مشاور</span>
-    </div>
-
-    <div class="card">
-      <img src="./asset/Obaid.jpg">
-      <p>
-        “ زه د یو هیوادوال په حیث په خپل اسلامي نظام باندي باور لرم چې دوی به د ولس او نظام د ساتني او 
-        لپاره هره ممکنه هڅه وکړي او د ولس په ملګرتیا به مو قافله د بریالیتوب تر سرحده رسوي رسوي.
-         بیا هم له الحمزةامارتي شرکت څخه مننه کوم چې هیوادوالو ته د خپلو خدماتو څخه خبرداری ورکوي.
-      </p>
-      <h3>مولوي عبیداللّه عابد</h3>
-      <span>یو تن دیني عالم</span>
-    </div>
-
-  </div>
-</section>
 
 @endsection
